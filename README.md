@@ -49,7 +49,7 @@ WordPress 環境１つを作るのは（docker-compose などを使えば）非�
 
     - 停止したコンテナを再起動する場合のコマンド: `$ docker start wordpress1`.
 
-    - コンテナを削除する場合のコマンド（データが消えます）: `$ docker rm wordpress1`.
+    - コンテナを削除する場合のコマンド（データが消え、MySQL のデータベースも drop されます）: `$ ./docker_rm_wordpress 1`.
 
   - `$ ./docker_run_wordpress.sh 2` （インデックス番号 = 2 の場合）
 
@@ -63,10 +63,10 @@ WordPress 環境１つを作るのは（docker-compose などを使えば）非�
 
     - 停止したコンテナを再起動する場合のコマンド: `$ docker start wordpress2`.
 
-    - コンテナを削除する場合のコマンド（データが消えます）: `$ docker rm wordpress2`.
+    - コンテナを削除する場合のコマンド（データが消え、MySQL のデータベースも drop されます）: `$ ./docker_rm_wordpress 2`.
 
 
-  - 同様にして好きなだけ WordPress 環境を追加できる.
+  - 同様にして好きなだけ WordPress 環境を追加できます。
 
 
 ## Copyright
