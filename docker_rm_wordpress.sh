@@ -14,5 +14,6 @@ else
 	docker rm "$SERVERNAME"
 	docker exec mysql mysql -u root -proot -e 'drop database wp'$NUM'db'
 	rm ./nginx/wp$NUM.conf
+	rm -rf ./www/"$SERVERNAME"
 fi
 
