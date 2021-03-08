@@ -69,6 +69,19 @@ WordPress 環境１つを作るのは（docker-compose などを使えば）非�
   - 同様にして好きなだけ WordPress 環境を追加できます。
 
 
+## 名前解決で環境を分ける方法
+
+`hosts` ファイルに以下を記載しておくか、DNS による名前解決で同様の処理ができればサーバー名だけで各 WordPress 環境にアクセスできます：
+
+```
+127.0.0.1  wp1.mydockernet.local wp2.mydockernet.local wp3.mydockernet.local wp4.mydockernet.local ...
+```
+
+※現在のスクリプトは wpX.mydocketnet.local という名前のサーバーを作るようになっています（X はスクリプト実行時に指定するインデックス）。このサーバー名が解決できるようになるか、名前解決できるサーバー名になるようスクリプトを変更すれば対応できます。
+
+※ hosts ファイルを作る場合で、かつ localhost ではなく外部からアクセスさせる場合は、アクセスする PC の hosts ファイルを編集する必要があります。その際に指定する IP アドレスは `127.0.0.1` ではなく、docker を動かしているホスト PC の IP アドレスを指定します。
+
+
 ## Copyright
 
 2021 [K.Kimura @ Juge.Me](https://github.com/dotnsf) all rights reserved.

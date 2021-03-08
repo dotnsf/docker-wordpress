@@ -7,7 +7,12 @@ if [ $# -eq 0 ]; then
 else
 	NUM="${1:-1}"
 	PORT=`expr $NUM \+ 8080`
+	SERVERNAME="wp$NUM.mydockernet.local"
 
-	docker run --name wordpress"$NUM" --link mysql:mysql -e WORDPRESS_DB_HOST=mysql:3306 -e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=root -e WORDPRESS_DB_NAME=wp"$NUM"db -d -p "$PORT":80 wordpress
+	docker run --name "$SERVERNAME" --network my-wp-network --link mysql:mysql -e WORDPRESS_DB_HOST=mysql:3306 -e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=root -e WORDPRESS_DB_NAME=wp"$NUM"db -d -p "$PORT":80 wordpress
+
+	echo "server{ listen 80; server_name $SERVERNAME; location / { proxy_pass http://$SERVERNAME; proxy_redirect default; } }" > ./nginx/wp"$NUM".conf
+
+	docker restart nginx
 fi
 
