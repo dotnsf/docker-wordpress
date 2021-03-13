@@ -19,5 +19,7 @@ else
 	echo "server{ listen 80; server_name $SERVERNAME; location / { proxy_pass http://$SERVERNAME; proxy_redirect default; } }" > ./nginx/wp"$NUM".conf
 
 	docker restart nginx
+
+	echo "server: $SERVERNAME -> localhost:$PORT"
 fi
 
