@@ -15,6 +15,14 @@ WordPress 環境１つを作るのは（docker-compose などを使えば）非�
 
   - https://docs.docker.com/get-docker/ 参照
 
+- パーミッション設定
+
+  - `$ chmod 777 nginx`
+
+  - `$ chmod 777 www`
+
+  - `$ chmod 777 .`
+
 - [dockerhub](https://hub.docker.com/) からイメージを取得: (後述のコマンド時に実行されるので必須ではないが、あらかじめ行っておくとコマンド実行時間が短縮できる)
 
   - `$ docker pull mysql`
